@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block body %}
-    <div class="d-flex justify-content-around align-items-center mt-5">
-        <div>
-            <img src="{{ book.image.url }}" alt="{{ book.title }}">
-        </div>
+    <div class="d-flex justify-content-around align-items-center mt-5 gap-3">
         <div class="w-50">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="img-fluid">
+        </div>
+        <div class="w-100">
             <h1>{{ book.title }}</h1>
             <p>Description: {{ book.description }}</p>
             <p>Category: {{ book.category }}</p>
