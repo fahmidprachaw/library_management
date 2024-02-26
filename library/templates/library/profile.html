@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<H3 class="text-center mt-5 mb-5">User Profile</H3>
+    <div class="text-center mb-5 border rounded w-75 mx-auto p-4 shadow">
+        <h4>Welcome MR. {{user.first_name}}</h4>
+        <h5>Balance : $ {{ balance }}</h5>
+    </div>
+
+    <div class="mt-5 text-center">
+        <h5>To See your borrowed Book list</h5>
+        <p>Click this Button.</p>
+        <a class="btn btn-warning" href="{% url "borrowed_book" %}">Borrowed Lits</a>
+    </div>
+{% endblock  %}

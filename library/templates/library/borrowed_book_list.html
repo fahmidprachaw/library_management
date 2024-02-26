@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h3 class="text-center mt-5">Borrowed Book </h3>
+<div class="mx-4 row gap-3 mt-5">
+    {% for borrowed_book in borrowed_books %}
+        <div class="card col-md-4" style="width: 18rem;">
+            <img src="{{ borrowed_book.book.image.url }}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{borrowed_book.book.title}}</h5>
+            <p class="card-text">{{borrowed_book.book.description|truncatewords:10}}</p>
+            <p class="card-text">{{borrowed_book.book.price}}</p>
+            <p class="card-text">{{borrowed_book.book.category}}</p>
+            <p>Borrowed Date: {{borrowed_book.borroing_date}}</p>
+            {% comment %} <a href="{% url "return_book" borrowed_book.pk %}" class="btn btn-primary">Return</a> {% endcomment %}
+            <form method="post" action="{% url 'return_book' borrowed_book.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Return Book</button>
+              </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock  %}
